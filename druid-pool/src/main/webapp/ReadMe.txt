@@ -15,4 +15,5 @@ mysql -uroot -proot -h172.16.2.145 -P9066
 mysql -uroot -proot -h172.16.2.145 -P8066
 
 
-
+ Druid基本使用配置以及如何查看sql信息监控日志
+http://blog.csdn.net/shukebai/article/details/51178658
