@@ -99,13 +99,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.abin.lee.druid.pool.model.Team"  useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-    <!--<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >-->
-      <!--SELECT LAST_INSERT_ID()-->
-    <!--</selectKey>-->
-    insert into team (id, team_name, create_time, update_time,
+  <insert id="insert" parameterType="com.abin.lee.druid.pool.model.Team"  >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into team (team_name, create_time, update_time,
       version)
-    values (next value for MYCATSEQ_MYCAT, #{teamName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+    values (#{teamName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
       #{version,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.abin.lee.druid.pool.model.Team" >
