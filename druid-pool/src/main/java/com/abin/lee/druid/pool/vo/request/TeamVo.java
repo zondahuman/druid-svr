@@ -15,4 +15,10 @@ public class TeamVo {
 
     private String teamName;
 
+    public TeamVo() {
+    }
+    public TeamVo(String teamName) {
+        this.teamName = teamName;
+    }
+
 }

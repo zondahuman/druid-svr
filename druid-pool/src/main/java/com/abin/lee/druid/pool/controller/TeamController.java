@@ -47,6 +47,24 @@ public class TeamController {
         return BaseVo.success();
     }
 
+    @RequestMapping(value = "/call1")
+    @ResponseBody
+    public BaseVo call1(String teamName, HttpServletRequest request) {
+        LOGGER.info("teamName={}", teamName);
+        String response = "FAILURE";
+        String headers = request.getHeader("STATUS_INPUT");
+        LOGGER.info("teamName={} headers={}", teamName, headers);
+        try {
+            TeamVo teamVo = new TeamVo(teamName);
+            this.teamService.insert(teamVo);
+            LOGGER.info("response={}", response);
+            response = "SUCCESS";
+        } catch (Exception e) {
+            LOGGER.error("teamName={}", teamName, e);
+            return BaseVo.error();
+        }
+        return BaseVo.success();
+    }
 
 
 
