@@ -426,7 +426,7 @@ public class AsyncHttpClientUtil {
         request1.put("Cookie", "rules_session_id=64b713c52c7511e6a4519801a7928995");
         request1.put("RRDSource", "haohuan");
         String input = "{\"uid\":\"1\",\"bank_cards\":[\"622123412341234\"],\"mobiles\":[\"15088741234\"],\"name\":\"樊令爱\",\"id_card\":\"320322197308222517\",\"ips\":[\"222.222.222.222\"]}";
-        String result1 = httpPost(input, httpPostUrl1,request1);
+        String result1 = AsyncHttpClientUtil.getInstance().httpPost(input, httpPostUrl1,request1);
         System.out.println("Executing result1: "+ result1);
 
     }
