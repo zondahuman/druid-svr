@@ -113,13 +113,13 @@ public class AsyncHttpClientUtil {
         // Configure the connection manager to use connection configuration either
         // by default or for a specific host.
         connManager.setDefaultConnectionConfig(getConnectionConfig());
-        connManager.setConnectionConfig(new HttpHost("somehost", 80), ConnectionConfig.DEFAULT);
+//        connManager.setConnectionConfig(new HttpHost("somehost", 80), ConnectionConfig.DEFAULT);
 
         // Configure total max or per route limits for persistent connections
         // that can be kept in the pool or leased by the connection manager.
-        connManager.setMaxTotal(100);
-        connManager.setDefaultMaxPerRoute(10);
-        connManager.setMaxPerRoute(new HttpRoute(new HttpHost("somehost", 80)), 20);
+        connManager.setMaxTotal(500);
+        connManager.setDefaultMaxPerRoute(100);
+//        connManager.setMaxPerRoute(new HttpRoute(new HttpHost("somehost", 80)), 20);
 
         return connManager;
     }
