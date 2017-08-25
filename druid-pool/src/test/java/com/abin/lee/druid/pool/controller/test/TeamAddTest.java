@@ -38,5 +38,10 @@ public class TeamAddTest {
         System.out.println("result="+result);
     }
 
+    public static void main(String[] args) {
+        String param = "jinlan investment company limited";
+        int length = param.length();
+        System.out.println(length);
+    }
 
 }
