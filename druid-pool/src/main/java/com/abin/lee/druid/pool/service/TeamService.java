@@ -16,5 +16,7 @@ public interface TeamService {
 
     Team findById(Integer id);
 
+    void update(Team team);
+
 
 }

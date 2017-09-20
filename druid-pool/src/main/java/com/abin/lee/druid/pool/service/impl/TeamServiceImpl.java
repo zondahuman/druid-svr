@@ -70,7 +70,8 @@ public class TeamServiceImpl implements TeamService {
                 if (status == TransactionSynchronization.STATUS_COMMITTED) {
                     LOGGER.info("进件{}事务提交，开始后续流程", status);
                     // 进件完毕，开始后续流程
-                    processService.execute(team.getId(), orderInfo.getId());
+//                    processService.execute(team.getId(), orderInfo.getId());
+                    processService.batchProcess(team.getId(), orderInfo.getId());
                 }
             }
         });
@@ -89,4 +90,12 @@ public class TeamServiceImpl implements TeamService {
             return limits.get(0);
         }
     }
+
+
+    @Override
+    public void update(Team team) {
+        this.teamMapper.updateByPrimaryKey(team);
+
+    }
+
 }

@@ -9,6 +9,6 @@ public interface ProcessService {
 
     void execute(int id, int orderId);
 
-
+    void batchProcess(int id, int orderId) ;
 
 }
