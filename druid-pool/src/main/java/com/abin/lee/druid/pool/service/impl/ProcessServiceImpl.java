@@ -130,12 +130,13 @@ public class ProcessServiceImpl implements ProcessService {
             e.printStackTrace();
         } finally {
             try {
+                LOGGER.info("batchProcess----id={}  orderId={} countDown={}", id, orderId, countDown.getCount()  +"-------end");
                 countDown.await();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        LOGGER.info("batchProcess----id={}  orderId={} countDown={}", id, orderId, countDown.getCount()  +"-------end");
+
 
 
         long stop = System.currentTimeMillis();
