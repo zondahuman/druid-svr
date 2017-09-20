@@ -43,4 +43,10 @@ public class OrderServiceImpl implements OrderService {
             return limits.get(0);
         }
     }
+
+    @Override
+    public void update(OrderInfo orderInfo) {
+        this.orderInfoMapper.updateByPrimaryKey(orderInfo);
+
+    }
 }

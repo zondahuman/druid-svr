@@ -15,6 +15,10 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -37,6 +41,7 @@ public class TeamServiceImpl implements TeamService {
     OrderService orderService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void insert(TeamVo teamVo) {
         LOGGER.info("teamVo = " + teamVo);
         Team team = new Team();
@@ -49,7 +54,7 @@ public class TeamServiceImpl implements TeamService {
             e.printStackTrace();
         }
         this.teamMapper.insert(team);
-        this.processService.execute(team.getId());
+
         OrderInfo orderInfo = new OrderInfo();
         orderInfo.setName("lee");
         orderInfo.setAge(23);
@@ -57,6 +62,18 @@ public class TeamServiceImpl implements TeamService {
         orderInfo.setUpdateTime(new Date());
         orderInfo.setVersion(0);
         this.orderService.insert(orderInfo);
+
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+            @Override
+            public void afterCompletion(int status) {
+                super.afterCompletion(status);
+                if (status == TransactionSynchronization.STATUS_COMMITTED) {
+                    LOGGER.info("进件{}事务提交，开始后续流程", status);
+                    // 进件完毕，开始后续流程
+                    processService.execute(team.getId(), orderInfo.getId());
+                }
+            }
+        });
 
     }
 

@@ -15,4 +15,7 @@ public interface OrderService {
 
     OrderInfo findById(Integer id);
 
+    void update(OrderInfo orderInfo);
+
+
 }

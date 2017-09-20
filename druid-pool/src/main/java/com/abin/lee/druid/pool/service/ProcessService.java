@@ -7,5 +7,8 @@ package com.abin.lee.druid.pool.service;
  */
 public interface ProcessService {
 
-    void execute(int id);
+    void execute(int id, int orderId);
+
+
+
 }
