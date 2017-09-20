@@ -98,7 +98,7 @@ public class ProcessServiceImpl implements ProcessService {
 
     public void batchProcess(int id, int orderId) {
         LOGGER.info("batchProcess----id={}  orderId={}", id, orderId +"-------start");
-        int totalThread = 3;
+        int totalThread = 2;
         long start = System.currentTimeMillis();
         CountDownLatch countDown = new CountDownLatch(totalThread);
         try {
