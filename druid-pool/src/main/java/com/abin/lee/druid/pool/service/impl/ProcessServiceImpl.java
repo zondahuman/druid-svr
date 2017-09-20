@@ -97,7 +97,7 @@ public class ProcessServiceImpl implements ProcessService {
 
 
     public void batchProcess(int id, int orderId) {
-        LOGGER.info("batchProcess----id={}  orderId={}", id, orderId, "-------start");
+        LOGGER.info("batchProcess----id={}  orderId={}", id, orderId +"-------start");
         int totalThread = 3;
         long start = System.currentTimeMillis();
         CountDownLatch countDown = new CountDownLatch(totalThread);
@@ -135,10 +135,11 @@ public class ProcessServiceImpl implements ProcessService {
                 e.printStackTrace();
             }
         }
+        LOGGER.info("batchProcess----id={}  orderId={} countDown={}", id, orderId, countDown.getCount()  +"-------end");
 
 
         long stop = System.currentTimeMillis();
-        LOGGER.info("batchProcess----id={}  orderId={}", id, orderId, "-------end");
+        LOGGER.info("batchProcess----id={}  orderId={}", id, orderId +"-------end");
 
     }
 
