@@ -17,6 +17,7 @@
     <import resource="spring-dao.xml" />
     <import resource="spring-web.xml" />
     <import resource="spring-mvc.xml" />
+    <import resource="spring-pool.xml" />
 
 
 

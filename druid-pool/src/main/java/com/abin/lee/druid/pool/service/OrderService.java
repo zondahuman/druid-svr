@@ -2,7 +2,6 @@ package com.abin.lee.druid.pool.service;
 
 
 import com.abin.lee.druid.pool.model.OrderInfo;
-import com.abin.lee.druid.pool.model.Team;
 import com.abin.lee.druid.pool.vo.request.TeamVo;
 
 /**
@@ -10,11 +9,10 @@ import com.abin.lee.druid.pool.vo.request.TeamVo;
  * distribute-svr
  * com.abin.lee.distribute.mycat.service
  */
-public interface TeamService {
+public interface OrderService {
 
-    void insert(TeamVo teamVo);
+    void insert(OrderInfo orderInfo);
 
-    Team findById(Integer id);
-
+    OrderInfo findById(Integer id);
 
 }

@@ -19,7 +19,7 @@
     <logger name="javax.servlet" level="DEBUG"/>
 
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="console" />
     </root>
 
