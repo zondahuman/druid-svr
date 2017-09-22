@@ -331,7 +331,7 @@ public class AsyncHttpClientUtil {
         httpAsyncClient.start();
         try {
             if(StringUtils.isBlank(json))
-                throw new Exception("请求参数不能为空");
+                throw new Exception("request parameter is not null...");
             HttpPost httpPost = new HttpPost(httpUrl);
             for(Iterator<Map.Entry<String, String>> iterator=headers.entrySet().iterator();iterator.hasNext();){
                 Map.Entry<String, String> entry = iterator.next();
